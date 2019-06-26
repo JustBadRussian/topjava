@@ -5,7 +5,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 import ru.javawebinar.topjava.model.Meal;
 import ru.javawebinar.topjava.repository.MealRepository;
-import ru.javawebinar.topjava.util.MealsUtil;
 import ru.javawebinar.topjava.util.Util;
 
 import javax.annotation.PostConstruct;
@@ -31,10 +30,12 @@ public class InMemoryMealRepository implements MealRepository {
     private Map<Integer, InMemoryBaseRepository<Meal>> usersMealsMap = new ConcurrentHashMap<>();
 
     {
-        MealsUtil.MEALS.forEach(meal -> save(meal, USER_ID));
-
-        save(new Meal(LocalDateTime.of(2015, Month.JUNE, 1, 14, 0), "Админ ланч", 510), ADMIN_ID);
-        save(new Meal(LocalDateTime.of(2015, Month.JUNE, 1, 21, 0), "Админ ужин", 1500), ADMIN_ID);
+        save(new Meal(LocalDateTime.of(2019, Month.JUNE, 24, 9, 0), "Завтрак", 500), USER_ID);
+        save(new Meal(LocalDateTime.of(2019, Month.JUNE, 24, 13, 0), "Обед", 900), USER_ID);
+        save(new Meal(LocalDateTime.of(2019, Month.JUNE, 24, 18, 0), "Ужин", 700), USER_ID);
+        save(new Meal(LocalDateTime.of(2019, Month.JUNE, 25, 9, 0), "Завтрак", 500), ADMIN_ID);
+        save(new Meal(LocalDateTime.of(2019, Month.JUNE, 25, 13, 0), "Обед", 850), ADMIN_ID);
+        save(new Meal(LocalDateTime.of(2019, Month.JUNE, 25, 18, 0), "Ужин", 650), ADMIN_ID);
     }
 
 
